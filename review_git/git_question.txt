@@ -1,0 +1,27 @@
+Question 1: Git là gì, sử dụng như thế nào.
+Answers: 
+        -Git là gì, sử dụng như thế nào.
+        -Theo dõi các thay đổi trong mã nguồn.
+        => giúp phối hợp làm việc trên cùng một dự án.
+Question 2: Phân biệt git clone và git fetch
+        -Git clone Sao chép toàn bộ kho lưu trữ (repository) từ xa về máy tính của bạn bao gồm branch, commit, lịch sử.
+        -Git fetch là Tải về các thay đổi từ kho lưu trữ từ xa mà không thay đổi mã nguồn hoặc lịch sử commit hiện tại của bạn.
+Question 3: Phân biệt git fetch và git pull
+        -git fetch chỉ tải về các thay đổi từ xa và cập nhật các nhánh từ xa trong kho lưu trữ cục bộ của bạn mà không hợp nhất chúng vào nhánh làm việc hiện tại. 
+        Sau khi fetch, bạn cần thực hiện git merge hoặc git rebase để kết hợp các thay đổi này.
+        -git pull tải về các thay đổi từ xa và tự động hợp nhất chúng vào nhánh làm việc hiện tại của bạn, làm cho nhánh của bạn đồng bộ với nhánh từ xa.
+Question 4: Khái niệm pull request
+        - Pull Request cho phép các nhà phát triển thông báo về các thay đổi mà họ đã thực hiện trên một nhánh (branch) riêng biệt và đề xuất việc hợp nhất (merge)
+         những thay đổi này vào nhánh chính (main hoặc master) của dự án.
+Question 5: Phân biện git pull và git pull --rebase 
+            trước khi rebase:
+            A --- B  (origin/main)
+            A --- C ---D (feature)
+            sau khi rebase:
+            feature:
+            A --- B --- C' --- D'
+
+            Tóm lại:
+            git pull = git fetch + git merge
+            git pull --rebase = git fetch + git rebase
+
