@@ -26,3 +26,5 @@ Question 5: Phân biện git pull và git pull --rebase
             git pull --rebase = git fetch + git rebase
 
 change need rebase
+hello 123
+123
