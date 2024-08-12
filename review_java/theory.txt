@@ -1,0 +1,197 @@
+* lập trình thêm 1 thứ cần phải tính toán thì thêm 1 rũi ro.
+
+Question 1:Phân biệt JDK,JRE,JVM
+Question 2: Tại sao java write one run anywhere->  đoc ơ đây: https://gpcoder.com/1720-phan-biet-jvm-jre-jdk/
+Question 3: trong java có 3 kiểu dữ liệu chính:
+    Primitive datatype: byte,  short, int, long, float,long, float, double, char, boolean -> java lưu trữ giá trị
+    Reference datatype: vd như những class mình tạo, string, java sẽ lưu trữ giá trị tham chiếu cũa những kiểu đối tượng này thay vì lưu trữ giá trị.
+    Enum: cho phép định nghĩa 1 tập các hằng số tên. giúp cho mã nguồn dễ đọc hơn
+Question 4: cách thức quản lý, lưu trữ, khởi tạo của kiểu dữ liệu nguyên thuỷ và đối tượng
+    kiểu dữ liệu nguyên thuỷ:
+                        - có kích thước cố định (ex: int 4bytes, char 2bytes)
+                        - lưu trữ trên stack
+                        - biến lưu trữ giá trị trực tiếp ko tham chiếu đến một đối tượng khác trong bộ nhớ
+    kiểu dữ liệu đối tượng:
+                        - có kích thước không cố định
+                        - lưu trữ trong heap     
+                        - biến lưu trữ ở stack gồm địa chỉ tham chiếu đến đối tượng trong bộ nhớ heap    
+                        - khởi tạo = từ khoá new          
+Question 5: Enum là gì, khi nào xử dụng Enum 
+            -enum là kiểu dữ liệu cho phép định nghĩa 1 tập các hằng số tên. giúp cho mã nguồn dễ đọc hơn
+            -sử dụng enum khi cần đảm bảo rằng chỉ các giá trị hợp lệ được xử dụng. EXAMPLE: chỉ nhập male, female, other cho mục gender.
+Question 6: Final trong java:
+            - làm cho hiến trở thành hằng số, tức là ko thế thay đổi sau khi khởi tạo
+            - dùng cho class thì class đó ko thể kế thừa
+            - dùng cho method thì method đó ko thể overide
+Question 7: từ khoá static trong java:
+            - khi 1 biến được khai báo với từ khoá static thì nó thuộc lớp đó, nó không thuộc 1 đối tượng cụ thể nào
+            - static được lưu trưc trong bộ nhớ tĩnh, khởi tạo khi class nạp vào bộ nhớ và tồn tại suốt chương trình
+            - Phương thức static chỉ có thể truy cập các biến static và gọi các phương thức static khác trực tiếp.
+Question 8: Có thể khai báo private contructor được không, vì sao?
+            - có thể khai báo private contructor
+                + dùng để đảm bảo chỉ có 1 đối tượng được tạo ra trong suốt vòng đời ứng dụng (Singleton Pattern): 
+                                            public class Singleton {
+                                                private static Singleton instance;
+
+                                                private Singleton() {
+                                                    // private constructor để ngăn chặn khởi tạo từ bên ngoài
+                                                }
+
+                                                public static Singleton getInstance() {
+                                                    if (instance == null) {
+                                                        instance = new Singleton();
+                                                    }
+                                                    return instance;
+                                                }
+                                            }
+                + thay thế bằng phương thức tĩnh để kiểm soát cách mà đối tượng được tạo ra:
+                ex: Database.connect(url, password) nếu ko private contructor thì có thể sử dụng new Database().
+Question 9: Phân biệt class và object:
+            -Class là một khuôn mẫu hoặc bản thiết kế cho các đối tượng bao gồm các attributes, method.
+            -Đối tượng là 1 thể hiện của class, được tạo ra từ khuôn mẫu mà khuôn mẫu ở đây là class
+Queston 10: Tại sao phải khai báo private cho thuộc tính và truy cập qua getter, setter
+            - điều này cho phép các thuộc tính không bị truy cập trực tiếp từ bên ngoài, bảo vệ dữ liệu khỏi bị thay đổi không kiểm soát
+            - cho phép dữ liệu được đọc, và có thể thêm logic kiểm tra giá trị trước khi đc thay đổi.
+            - ẩn chi tiết, cài đặt, nếu sau này có thay đổi bạn chỉ cần thay đổi trong getter, setter mà ko ảnh hưởng đến code bên ngoài.
+            - giúp dễ dàng kiểm thử và sửa lỗi, tăng tính ổn định của chương trình
+            *Encapsulation: Đây là một trong bốn nguyên tắc cơ bản của lập trình hướng đối tượng (OOP).
+             Bằng cách sử dụng thuộc tính private và các phương thức getter và setter, bạn thực hiện tính đóng gói, giúp bảo vệ và quản lý dữ liệu một cách hiệu quả.
+Question 11: có thể truy cập các thuộc tinh, phương thức private từ bên ngoài không:
+ có 1 cách nhưng ko được khuyến khích
+ Reflection: Cho phép truy cập các thuộc tính và phương thức private nhưng không được khuyến khích vì phá vỡ tính đóng gói và bảo mật.
+ Question 12: Phân biệt contructor và setter:
+            -contructor là hàm tạo, sử dụng để tạo ra đối tượng
+            -setter là 1 phương thức của đối tượng
+Question 13: Phân biệt từ khoá this và super
+this:
+        Tham chiếu đến đối tượng hiện tại của lớp.
+        Sử dụng để phân biệt giữa các biến instance và tham số.
+        Gọi constructor khác trong cùng một lớp.
+        Truyền đối tượng hiện tại như một tham số.
+super:
+        Tham chiếu đến lớp cha (superclass) của lớp hiện tại.
+        Truy cập biến instance của lớp cha.
+        Gọi phương thức của lớp cha.
+        Gọi constructor của lớp cha trong dòng đầu tiên của constructor lớp con.
+Question 14:Những tính chất của hướng đối tượng, cho ví dụ áp dụng được ở đâu:
+        Tính kế thừa: kế thừa và sử dụng lại các thuộc tính, phuơng thức của class cha.
+        Tính đóng gói: Tính đóng gói là quá trình ẩn giấu các chi tiết cài đặt bên trong một lớp và chỉ cung cấp các phương thức công khai để tương tác với các thuộc tính và phương thức của lớp đó.
+        Tính đa hình: tinh đa hình cho phép một phương thức hoặc thuộc tính có nhiều hình thức khác nhau. Điều này cho phép đối tượng xử lý các kiểu dữ liệu khác nhau theo cách riêng của nó.
+        Tính trừu tượng: Tính trừu tượng là quá trình ẩn giấu các chi tiết cài đặt và chỉ cung cấp các đặc điểm cần thiết cho người sử dụng. 
+         Điều này giúp giảm độ phức tạp của hệ thống bằng cách tập trung vào các thuộc tính quan trọng.
+Question 15: phân biệt abtract class và interface
+    abtract class:
+            - có thể có cả attribuute, phương thức , và phương thức trừu tương
+            - dùng để kế thừa
+    interface
+            - chỉ có thể có biến static, final và phương thức trừu tương.
+            - để implement
+            - implement đa kế thừa 
+Question 16: Giải thích functional interface: là 1 interface chỉ chứa 1 phương thức trừu tượng duy nhất
+                                            - có thể gán cho nó 1 biểu thức lamda và cho phép biểu thức lambda đóng vai trò như là 1 đối số của method
+                                            - có thể sử dụng tương tự như callback trong js
+                                            - có thể đinhj nghĩa tham số trước cho method, và cho phép 1 function interface là 1 tham số nhập sau để định nghĩa hành động.
+Question 17: có mấy loại exception:
+            - Trong Java, có hai loại exception chính: checked exceptions và unchecked exceptions.
+            + checked exceptions là exception mà trinh biên dịch yêu cầu phải xử lí bằng cách sử dụng try catch hoặc throws
+            + unchecked exceptions là  exception trình biên dịch ko yc xử lí, vd như chia cho số 0, null, nó là lớp con của runtime exception
+Question 18:  phân biện runtime exception và compile time exception
+Đặc Điểm:	Compile-Time Exception (Checked Exception)	            Runtime Exception (Unchecked Exception)
+Thời điểm phát hiện	Trong quá trình biên dịch	                    Trong quá trình thực thi
+Yêu cầu xử lý:	Bắt buộc phải xử lý hoặc khai báo	                Không bắt buộc phải xử lý hoặc khai báo
+Phạm vi:	Lớp Exception trừ RuntimeException và các lớp con	        Lớp RuntimeException và các lớp con
+Ví dụ:	IOException, SQLException, FileNotFoundException	           NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException
+
+Question 19: Các cách xử lí Exception
+try catch
+try catch finally
+throws
+
+Question 20: phân biệt final và finally
+final là từ khoá để áp dụng hạn chế cho lớp, phương thức, biến.
+finally là từ khoá sử dungj với khổi try catch trog xử lí exception 
+
+Question 21: phân biệt string literal và string object
+String Literal: Được lưu trữ trong String Pool. String str1 = "Hello";
+String str2 = "Hello"; str1 và 2 đều tham chiếu tới cùng "hello" trong string pool giúp tiết kiệm bộ nhớ
+String Object: Được lưu trữ trong heap memory.
+
+Question 22: Phân biện immutable và mutable
+immutable có nghĩa là đối tượng ko thể thay đổi sau khi tạo ra
+vd string a = hello, a = hello +b thì phải tạo 1 đối tượng string mới chứ ko thể nối vào đối tương cũ
+mutable là đối tương có thể thay đổi sau khi tạo ra : vd stringbuilder khi nối sẽ nối vào đối tượng cũ chứ không tạo đối tương mới
+
+Question 23: Phân biệt String builder và string buffer
+đều là mutable nhưng string builder là non-synchonized còn buffer là synchonized
+non-synchonized  là nhiều luồn có thể truy cập phương thức cùng lức còn synchonized sẽ cho luồng đầu tiên truy cập 1 khoá và các luông sau k thể truy cập.
+nên sử dụng string builder trong đơn luông và ngược lại 
+string buffer hiệu suất thâos hơn vì phải giữ và giải phóng khoá
+
+CTDL:
+Arrray fixed length: 
+            -Kích thước của mảng được xác định khi mảng được tạo ra 
+            -Các phần tử của mảng được lưu trữ trong các ô nhớ liên tiếp nhau. Điều này giúp tối ưu hóa truy cập bộ nhớ và tăng hiệu suất.
+            -Truy cập, cập nhật, hoặc gán giá trị cho một phần tử trong mảng là rất nhanh, với thời gian truy cập O(1).
+            -Thêm hoặc xóa phần tử thì không hiệu quả vì cần phải dịch chuyển các phần tử còn lại, dẫn đến thời gian O(n), nơi n là số phần tử trong mảng.
+            -Tất cả các phần tử trong mảng phải có cùng kiểu dữ liệu
+            -Khi biết trước kích thước
+Arraylist: 
+            -Kích thước động: Kích thước có thể thay đổi khi thêm hoặc xóa phần tử.
+            sử dụng Khi cần kích thước linh hoạt và truy cập nhanh
+Linkedlist: Truy cập phần tử chậm truy cập phần tử O(n)
+            Thêm/xóa phần tử nhanh ở đầu/cuối O(1), O(n)
+            - lưu trữ trong những ô nhớ ko liên tiếp
+          sử dụng  Khi cần thêm/xóa phần tử thường xuyên ở đầu/cuối
+Stack:
+            -Last In, Fist out
+            ứng dựng trong các bài toán quay lui như undo
+Queue:      First in, First out
+            - thêm, phần tử ở cuối hàng đợi và lấy phần tử ở đầu hàng đợi
+DeQueue:    - thêm lấy phẩn tử ở cả 2 đầu
+Map: Lưu Trữ Dữ Liệu Theo Cặp Khóa-Giá Trị:           
+Set: được sử dụng để lưu trữ một tập hợp các phần tử mà không cho phép các phần tử trùng lặp
+-Đặc điểm: Sử dụng một bảng băm (hash table) để lưu trữ các phần tử.
+            -Độ phức tạp: O(1) cho các thao tác thêm, xóa, và kiểm tra sự tồn tại trong trường hợp trung bình.
+            hashset: Không đảm bảo thứ tự của các phần tử
+            linkedlistHashset: đảm bảo thứ tự của các phần tử
+            khi nào nên dùng: -Loại bỏ các phần tử trùng lặp
+                                -Kiểm tra sự tồn tại của phần tử
+                                -Thực hiện các phép toán tập hợp; giao, hợp
+            TreeSet
+                            -Thứ tự: Duy trì các phần tử theo thứ tự tự nhiên (theo thứ tự tăng dần của các phần tử) hoặc theo bộ so sánh cung cấp.
+                            -Hiệu suất: Thao tác thêm, xóa, và kiểm tra sự tồn tại của phần tử có độ phức tạp là O(log n).
+
+Question 24: khi nào nên khởi tạo capasity: khi biết trước kích thước mảng vì khi không chỉ địh kích thước thì
+tới 1 số lượng nhất định, thường là 10, arraylist sẽ tự đogj tìm 1 số ô nhớ gấp đôi và copy mảng cũ vào
+-Ciảm Số Lần Tái Phân Bổ Bộ Nhớ: Giúp tránh việc tái phân bổ bộ nhớ nhiều lần khi thêm phần tử vào cấu trúc dữ liệu.
+-Cải Thiện Hiệu Suất: Tối ưu hóa thời gian thêm phần tử bằng cách giảm thiểu các thao tác sao chép phần tử.
+-Quản Lý Bộ Nhớ Hiệu Quả: Sử dụng bộ nhớ hiệu quả hơn khi bạn biết trước số lượng phần tử cần lưu trữ.
+Question 25: làm sao để các đối tượng trong sẻ ko trung nhau: so sanh bằng hàm hashcode và equal
+Question 26: Phân biệt compareble và comparator
+compareble để so sánh theo đinh nghia của hàm compareTo của lớp đó
+mỗi comparator có thể định nghĩa nhiều tiêu chí so sánh
+
+Stream là gì: Stream là 1 luồng dữ liệu từ nguồn
+Strem cung cấp các phương thức như filter, map, reduce, sort
+stream ko thay đổi dữ liệu nguồn mà tạo ra stream mới với các thay đổi
+các phép toan thực hiện lazy, ko thưc hiên ngay lập tức mà chỉ khi có yêu cầu 1 kết quả
+
+lợi ichs Xử Lý Dữ Liệu Một Cách Declarative: mô tả diều bạn muốn thực hiện như filter, sort thay vì viết vòng lăp
+Tạo Mã Ngắn Gọn và dễ đọc
+Phép Toán Tạo (Creation Operations):
+    Stream.of(...): Tạo một Stream từ các giá trị.
+    Arrays.stream(...): Tạo một Stream từ một mảng.
+    Collection.stream(): Tạo một Stream từ một tập hợp.
+Phép Toán Trung Gian (Intermediate Operations):
+    filter(Predicate<T> predicate): Lọc các phần tử dựa trên điều kiện.
+    map(Function<T, R> mapper): Ánh xạ các phần tử từ kiểu này sang kiểu khác.
+    sorted(): Sắp xếp các phần tử.
+    distinct(): Loại bỏ các phần tử trùng lặp.
+Phép Toán Kết Thúc (Terminal Operations):
+    collect(Collector<T, A, R> collector): Thu thập kết quả vào một tập hợp hoặc một kiểu dữ liệu khác.
+    forEach(Consumer<T> action): Thực hiện một hành động cho mỗi phần tử.
+    reduce(BinaryOperator<T> accumulator): Thu gọn các phần tử thành một giá trị duy nhất.
+
+Khái Niệm Lambda Expression
+Lambda expression là một cách để tạo các đối tượng của giao diện hàm (functional interface) mà không cần phải viết một lớp cài đặt đầy đủ. 
+Điều này giúp giảm bớt lượng mã cần viết và làm cho mã nguồn dễ đọc hơn.

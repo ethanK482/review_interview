@@ -24,7 +24,25 @@ Question 5: Phân biện git pull và git pull --rebase
             Tóm lại:
             git pull = git fetch + git merge
             git pull --rebase = git fetch + git rebase
+Question 6: Phân biệt git rebase và git merge: 
+            Git Merge:
 
-change need rebase
-hello 123
-123
+            Kết hợp hai nhánh và tạo một commit hợp nhất.
+            Giữ lại lịch sử của cả hai nhánh.
+            Có thể làm lịch sử phức tạp với nhiều commit hợp nhất.
+            Git Rebase:
+
+            Áp dụng lại các commit của nhánh hiện tại lên đỉnh của nhánh khác.
+            Lịch sử gọn gàng và tuyến tính.
+            Thay đổi lịch sử commit của nhánh, cần cẩn thận khi sử dụng với nhánh đã chia sẻ.
+Question 7: Branch là gì:
+            Branch trong Git là một chỉ thị hoặc phiên bản của mã nguồn trong một kho lưu trữ. 
+            Nó cho phép bạn làm việc trên các phiên bản khác nhau của mã nguồn đồng thời mà không làm ảnh hưởng đến nhánh chính hoặc các nhánh khác. 
+Question 8: Push bị reject thì sao:
+            tạo branch mới từ branch dùng để push -> rebase với branch dùng để push trên remote -> push code lên, xoá branch cũ.
+            cách nhanh hơn là pull thẳng về, resolve rồi push lên.
+Question 9: Các bước khi nhận task từ dự án:
+            clone -> checkout qua branch mới -> code -> raise pull request vô dev branch
+
+
+common   
